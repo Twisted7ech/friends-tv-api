@@ -18,7 +18,9 @@
     <title>Friends TV Quotes</title>
 </head>
 <body>
-    <h1>Friends Quotes</h1>
+    <img src="Friends_logo.svg.png" alt="Friends Logo">
+    
+    <h3>Favorite quotes, for now</h3>
     <ul class="quotes">
     <% for(let i=0; i < info.length; i++) {%>
         <li class="quote">
@@ -27,7 +29,7 @@
             <span><%= info[i].season %></span>
             <span><%= info[i].episode %></span>
             <span><%= info[i].time %></span>
-            <span class='fa fa-circle-arrow-up'></span>
+            <span class='fa fa-solid fa-arrow-circle-up'></span>
             <!-- <span class='fa fa-trash'></span> -->
         </li>
     <% } %>
@@ -40,10 +42,18 @@
         <input type="text" placeholder="Phrase" name="phrase">
         <input type="number" min='1' max='10' placeholder="Season" name="season">
         <input type="number" min='1' max='25' placeholder="Episode" name="episode">
-        <input type="time" placeholder="Time" name="time">
+        <input type="text" placeholder="Time mm.ss" name="time">
         <input type="submit">
     </form>
     
+    <ul>To Do:
+        <li>Add Lots more quotes</li>
+        <li>vote on rank of favorite quotes</li>
+        <li>add quotes from home page</li>
+    </ul>
+
+
+    <h1>FRIENDS API</h1>
 
     <script src='js/main.js'></script>
 </body>
