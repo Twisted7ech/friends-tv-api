@@ -1,9 +1,9 @@
 const express = require('express')
 const app = express()
 const PORT = 8000
-const DB_STRING = mongodb+srv://Twisted7ech:6PIRKkVhHh4pdZHb@cluster0.vo6wb.mongodb.net/?retryWrites=true&w=majority
+
 const MongoClient = require('mongodb').MongoClient
-// require('dotenv').config()
+require('dotenv').config()
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
