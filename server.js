@@ -2,58 +2,75 @@ const express = require('express')
 const app = express()
 const PORT = 8000
 
-const quotes = {
-    'id0':{
-        'rank': 0,
-        'character': 'unknown',
-        'phrase': 'unknown',
-        'season': 'unknown',
-        'episode': 'unknown',
-        'timeMin': 'unknown'
-    },
-    'id1':{
-        'rank': 1,
-        'character': 'Joey',
-        'phrase': 'Could I be wearing more clothes?',
-        'season': 1,
-        'episode': 1,
-        'timeMin': 5
-    },
-    'id2':{
-        'rank': 1,
-        'character': 'Chandler',
-        'phrase': "Join me, won't you",
-        'season': 10,
-        'episode': 17,
-        'timeMin': 12
-    },
-    'id3':{
-        'rank': 1,
-        'character': 'Phoebe',
-        'phrase': "Which one, I'll try and slip it into my purse",
-        'season': 10,
-        'episode': 17,
-        'timeMin': 19
-    }
+const MongoClient = require('mongodb').MongoClient
+require('dotenv').config()
 
-}
+app.set('view engine', 'ejs')
+app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
-app.get('/', (request, response)=>{
-    response.sendFile(__dirname + '/index.html')
-})
 
-app.get('/api/:name', (request, response) =>{
-    const quote = request.params.name.toLowerCase()
-    if ( quotes[quote]){
-        response.json(quotes[quote])
-    }else {
-        response.json(quotes['unknown'])
-    }
+let db,
+    dbConnectionStr = process.env.DB_STRING,
+    dbName = 'friends-tv-api'
+
+MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
+    .then(client => {
+        console.log(`Connected to ${dbName} Database`)
+    db = client.db(dbName)
 })
 
 
 
+app.get('/',(request, response)=>{
+    db.collection('quotes').find().sort({rank: -1}).toArray()
+    .then(data => {
+        response.render('index.ejs', { info: data })
+    })
+    .catch(error => console.error(error))
+})
+
+app.post('/addQuote', (request, response) => {
+    db.collection('quotes').insertOne({character: request.body.character,
+    phrase: request.body.phrase, season: request.body.season, episode: request.body.episode, time: request.body.time, rank: 0})
+    .then(result => {
+        console.log('Quote Added')
+        response.redirect('/')
+    })
+    .catch(error => console.error(error))
+})
+
+app.put('/addOneRank', (request, response) => {
+    db.collection('quotes').updateOne({character: request.body.character,
+        phrase: request.body.phrase, season: request.body.season, episode: request.body.episode, time: request.body.time, rank: request.body.rank},{
+        $set: {
+            rank:request.body.rank + 1
+          }
+    },{
+        sort: {_id: -1},
+        upsert: true
+    })
+    .then(result => {
+        console.log('Added One Rank')
+        response.json('Rank Added')
+    })
+    .catch(error => console.error(error))
+
+})
+
+// app.delete('/deleteRapper', (request, response) => {
+//     db.collection('quotes').deleteOne({stageName: request.body.stageNameS})
+//     .then(result => {
+//         console.log('Rapper Deleted')
+//         response.json('Rapper Deleted')
+//     })
+//     .catch(error => console.error(error))
+
+// })
+    
 
 app.listen(process.env.PORT || PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends TV Quotes</title>
+</head>
+<body>
+    <h1>Friends Quotes</h1>
+    <ul class="quotes">
+    <% for(let i=0; i < info.length; i++) {%>
+        <li class="quote">
+            <span><%= info[i].character %></span>
+            <span><%= info[i].phrase %></span>
+            <span><%= info[i].season %></span>
+            <span><%= info[i].episode %></span>
+            <span><%= info[i].time %></span>
+            <span class='fa fa-thumbs-up'></span>
+            <span class='fa fa-trash'></span>
+        </li>
+    <% } %>
+    </ul>
+
+    <h2>Add A Quote:</h2>
+
+    <form action="/addQuote" method="POST">
+        <input type="text" placeholder="Character" name="character">
+        <input type="text" placeholder="Phrase" name="phrase">
+        <input type="number" min='1' max='10'placeholder="Season" name="season">
+        <input type="number" placeholder="Episode" name="episode">
+        <input type="time" placeholder="Time" name="time">
+        <input type="submit">
+    </form>
+    
+
+    <script src='js/main.js'></script>
+</body>
+</html>

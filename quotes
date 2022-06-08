@@ -1,0 +1,35 @@
+const quotes = {
+    'id0':{
+        'rank': 0,
+        'character': 'unknown',
+        'phrase': 'unknown',
+        'season': 'unknown',
+        'episode': 'unknown',
+        'time': 'unknown'
+    },
+    'id1':{
+        'rank': 1,
+        'character': 'Joey',
+        'phrase': 'Could I be wearing more clothes?',
+        'season': 1,
+        'episode': 1,
+        'time': 5.45
+    },
+    'id2':{
+        'rank': 1,
+        'character': 'Chandler',
+        'phrase': "Join me, won't you",
+        'season': 10,
+        'episode': 17,
+        'time': 12.15
+    },
+    'id3':{
+        'rank': 1,
+        'character': 'Phoebe',
+        'phrase': "Which one, I'll try and slip it into my purse",
+        'season': 10,
+        'episode': 17,
+        'time': 19.30
+    }
+
+}
