@@ -42,8 +42,7 @@ app.post('/addQuote', (request, response) => {
 })
 
 app.put('/addOneRank', (request, response) => {
-    db.collection('quotes').updateOne({character: request.body.character,
-        phrase: request.body.phrase, rank: request.body.rank},{
+    db.collection('quotes').updateOne({character: request.body.character, phrase: request.body.phrase, rank: request.body.rank},{
         $set: {
             rank:request.body.rank + 1
           }
