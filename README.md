@@ -13,11 +13,9 @@ Provide a short description explaining the what, why, and how of your project. U
 
 Quotes are available from https://friends-tv-api.herokuapp.com/  or can be retreived with the api (in progress)
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
 
-    ```md
-    ![Friends page](assets/images/Capture.PNG)
-    ```
+![Friends page](assets/images/Capture.PNG)
+
 
 ## Credits
 
