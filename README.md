@@ -1,4 +1,6 @@
 # friends-tv-api
+![Friends Logo](https://friends-tv-api.herokuapp.com/Friends_logo.svg.png)
+
 
 ## Friend TV show API
 
