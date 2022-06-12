@@ -43,13 +43,13 @@ app.post('/addQuote', (request, response) => {
 
 app.put('/addOneRank', (request, response) => {
     db.collection('quotes').updateOne({character: request.body.character,
-        phrase: request.body.phrase, season: request.body.season, episode: request.body.episode, time: request.body.time, rank: request.body.rank},{
+        phrase: request.body.phrase, rank: request.body.rank},{
         $set: {
             rank:request.body.rank + 1
           }
     },{
         sort: {_id: -1},
-        upsert: true
+        upsert: false
     })
     .then(result => {
         console.log('Added One Rank')

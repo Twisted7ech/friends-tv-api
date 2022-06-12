@@ -24,12 +24,13 @@
     <ul class="quotes">
     <% for(let i=0; i < info.length; i++) {%>
         <li class="quote">
-            <span><%= info[i].character %></span>
-            <span><%= info[i].phrase %></span>
-            <span><%= info[i].season %></span>
-            <span><%= info[i].episode %></span>
-            <span><%= info[i].time %></span>
+            <span id="character"><%= info[i].character %></span>
+            <p id="phrase"><%= info[i].phrase %></p>
+            <span id="season">Season <%= info[i].season %></span>
+            <span id="episode">Episode <%= info[i].episode %></span>
+            <span id="time">Time<%= info[i].time %></span>
             <span class='fa fa-solid fa-arrow-circle-up'></span>
+            <span id='rank'>Rank <%= info[i].rank %></span>
             <!-- <span class='fa fa-trash'></span> -->
         </li>
     <% } %>

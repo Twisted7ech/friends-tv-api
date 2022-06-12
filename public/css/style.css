@@ -7,3 +7,6 @@ h1{
 ul{
     list-style: none;
 }
+li{
+    border: solid 1px rgb(204, 202, 202);
+}
