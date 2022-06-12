@@ -14,7 +14,7 @@ Quotes are available from https://friends-tv-api.herokuapp.com/  or can be retre
 To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
 
     ```md
-    ![alt text](assets/images/screenshot.png)
+    ![screenshot](assets/images/capture.png)
     ```
 
 ## Credits
